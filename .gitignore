@@ -1,32 +1,63 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+int main()
+{
+	char tam_palavra,palavra[10],letra[10],lacuna[10]="_";
+	int vida=5,x,i,pontos=0;
+	printf("Jogo da forca \n");
+	printf("\n\n Digite a palavra secreta:\n\n");
+	gets(palavra);
+	system("cls");
+	//laços de repetição
+	for(i=0;i<strlen(palavra);i++)
+	lacuna[i]='-';
+	tam_palavra=strlen(palavra);
+	
+	while(vida>0)
+	{
+		x=0;
+		printf("\n %s \n",lacuna);
+		printf("\n digite uma letra: \n \n \n ");
+		gets(letra);
+		
+		for(i=0;i<strlen(palavra);i++)
+		{
+			if(letra[0]==palavra[i])
+			{
+				lacuna[i]=palavra[i];
+				pontos++;
+				x++;
+			}
+		}
+		if(x==0)
+		{
+			vida=vida-1;
+			
+			if(vida==0)
+			{
+				printf("\n\n MORREU TONTO!!");
+				printf("\n A PALAVRA ERA: %s",palavra);
+				break;
+			}
+		
+		else
+		printf("\n ERROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOU! RESTAM %d VIDA(S)",vida); 
+		}
+		
+		else
+		{
+			if(pontos==tam_palavra)
+			{
+				printf("\n\n VOCE GANHOU !");
+				printf("\n A PALAVRA E: %s",palavra);
+				break;
+			}
+			
+			else
+			{
+				printf("\n  BOA VOCE ACERTOU UMA LETRA!");
+			}
+		}
+	} 
+	printf("\n\n");
+	system("pause");
+	return 0;
+}
